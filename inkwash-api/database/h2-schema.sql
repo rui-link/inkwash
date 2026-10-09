@@ -14,7 +14,6 @@ DROP TABLE IF EXISTS sys_preference;
 DROP TABLE IF EXISTS mon_journal;
 DROP TABLE IF EXISTS mon_login_info;
 DROP TABLE IF EXISTS sys_notice;
-DROP TABLE IF EXISTS sys_menu_permission;
 DROP TABLE IF EXISTS sys_role_permission;
 DROP TABLE IF EXISTS sys_user_group;
 DROP TABLE IF EXISTS sys_group_role;
@@ -171,13 +170,6 @@ CREATE TABLE sys_menu (
     updater BIGINT,
     create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Create sys_menu_permission join table (menu -> permission mapping)
-CREATE TABLE sys_menu_permission (
-    menu_id INT NOT NULL,
-    permission_id INT NOT NULL,
-    PRIMARY KEY (menu_id, permission_id)
 );
 
 -- System notice table

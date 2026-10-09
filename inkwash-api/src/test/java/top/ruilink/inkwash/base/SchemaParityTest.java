@@ -73,7 +73,7 @@ class SchemaParityTest {
 		assertEquals(mysql.tables.keySet(), h2.tables.keySet(),
 				"表集合不一致：仅 mysql 有 " + difference(mysql.tables.keySet(), h2.tables.keySet()) + "；仅 h2 有 "
 						+ difference(h2.tables.keySet(), mysql.tables.keySet()));
-		assertEquals(24, mysql.tables.size(), "表数量应与设计文档 §7.1 一致");
+		assertEquals(23, mysql.tables.size(), "表数量应与设计文档 §7.1 一致");
 	}
 
 	@Test

@@ -13,7 +13,6 @@ DROP TABLE IF EXISTS media_file;
 DROP TABLE IF EXISTS mon_journal;
 DROP TABLE IF EXISTS mon_login_info;
 DROP TABLE IF EXISTS sys_notice;
-DROP TABLE IF EXISTS sys_menu_permission;
 DROP TABLE IF EXISTS sys_role_permission;
 DROP TABLE IF EXISTS sys_user_group;
 DROP TABLE IF EXISTS sys_group_role;
@@ -60,13 +59,6 @@ CREATE TABLE sys_role_permission (
     role_id INT NOT NULL,
     permission_id INT NOT NULL,
     PRIMARY KEY (role_id, permission_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Create sys_menu_permission join table (menu -> permission mapping)
-CREATE TABLE sys_menu_permission (
-    menu_id INT NOT NULL,
-    permission_id INT NOT NULL,
-    PRIMARY KEY (menu_id, permission_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Create sys_account table

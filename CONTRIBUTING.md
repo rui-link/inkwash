@@ -428,8 +428,7 @@ git status --short        # read every line; confirm there is no docs/
 git diff --cached --stat
 ```
 
-If you touch `.github/sponsor/*.png`, expect an explicit maintainer review — replacing a donation QR
-code would redirect donations to whoever submitted the change.
+Please do not touch any file under `.github`.
 
 ---
 
