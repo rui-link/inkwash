@@ -1,0 +1,69 @@
+/*
+ * This file is part of Inkwash.
+ * Copyright (C) 2026 ruilink team.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+$menubar-width: 210px;
+$menubar-collapsed-width: 64px;
+$navbar-height: 56px;
+$tabview-height: 34px;
+$footer-height: 32px;
+
+:root {
+  --menubar-bg: #f0f9ff;
+  --menubar-text: #1e293b;
+  --menubar-logo-text: #2f7e9e;
+  --menubar-active-text: var(--el-color-primary);
+  --menubar-hover-bg: #e0f2fe;
+  --navbar-bg: #ffffff;
+  --navbar-border: #bae6fd;
+  --page-bg: #f8fafc;
+  --footer-bg: #e2e8f0;
+  --card-bg: #ffffff;
+  --card-header-bg: #f0f9ff;
+  --table-header-bg: #f0f9ff;
+  --table-stripe-bg: #f0f9ff;
+  --table-border: #bae6fd;
+  --tag-default-bg: #f8fafc;
+  --input-bg: #ffffff;
+  --header-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --inkwash-text-color: #303133;
+  --inkwash-text-color-secondary: #909399;
+  --inkwash-bg-color: #f5f7fa;
+  --inkwash-border-color: #dcdfe6;
+}
+
+[data-theme='ink-dark'] {
+  --menubar-bg: #1d2024;
+  --menubar-text: #a3abb4;
+  --menubar-logo-text: #ffffff;
+  --menubar-active-text: var(--el-color-primary);
+  --menubar-hover-bg: #2e3238;
+  --navbar-bg: #1d2024;
+  --navbar-border: #2e3238;
+  --page-bg: #15171a;
+  --footer-bg: #1d2024;
+  --card-bg: #1d2024;
+  --card-header-bg: #1d2024;
+  --table-header-bg: #1d2024;
+  --table-stripe-bg: #22262b --table-border: #2e3238;
+  --tag-default-bg: #2e3238;
+  --input-bg: #22262b;
+  --header-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --inkwash-text-color: #e4e7ed;
+  --inkwash-text-color-secondary: #a3abb4;
+  --inkwash-bg-color: #22262b;
+  --inkwash-border-color: #4c4d4f;
+}

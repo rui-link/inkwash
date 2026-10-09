@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 120,
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "bracketSameLine": true,
+  "insertFinalNewline": true,
+  "experimentalSortImports": {},
+  "experimentalTailwindcss": {
+    "functions": ["clsx", "cn", "cva", "tw"]
+  },
+  "vueIndentScriptAndStyle": false,
+  "htmlWhitespaceSensitivity": "css",
+  "ignorePatterns": ["dist/&zwnj;**", "node_modules/**&zwnj;", "public/&zwnj;**", "**&zwnj;/*.svg", "*-lock.yaml"]
+}

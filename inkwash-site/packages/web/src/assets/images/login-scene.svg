@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ink-wash landscape">
+  <defs>
+    <!-- 天空：顶部灰蓝 -> 近地平线浅灰蓝 -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7E96A8"/>
+      <stop offset="0.34" stop-color="#93A9B8"/>
+      <stop offset="0.56" stop-color="#B4C5D0"/>
+      <stop offset="0.71" stop-color="#BCCBD5"/>
+    </linearGradient>
+    <!-- 霞光：暖奶油色径向渐隐 -->
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#F2E9CF" stop-opacity="0.95"/>
+      <stop offset="0.55" stop-color="#E7DDC2" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#E7DDC2" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 山间雾带 -->
+    <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0.45" stop-color="#FFFFFF" stop-opacity="0.68"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <!-- 水面：上部倒影亮 -> 下部青灰 -->
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C2D4DC"/>
+    </linearGradient>
+    <!-- 空气薄雾：把远山轮廓融进天空 -->
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#BCCBD5" stop-opacity="0.50"/>
+      <stop offset="0.45" stop-color="#BFCED8" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#C4D3DC" stop-opacity="0"/>
+    </linearGradient>
+    <!-- 山脊轮廓柔化 -->
+    <filter id="ridgeSoft" x="-10%" y="-40%" width="120%" height="180%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="soft" x="-40%" y="-160%" width="180%" height="420%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+  </defs>
+
+  <!-- ============ HEADER · 天空 ============ -->
+  <rect width="1440" height="900" fill="url(#sky)"/>
+
+  <!-- 云层横抹 -->
+  <g filter="url(#soft)">
+    <ellipse cx="720" cy="105" rx="430" ry="34" fill="#869CAD" opacity="0.50"/>
+    <ellipse cx="1120" cy="165" rx="380" ry="30" fill="#90A6B5" opacity="0.42"/>
+    <ellipse cx="330" cy="195" rx="320" ry="28" fill="#9DB1BF" opacity="0.38"/>
+  </g>
+
+  <!-- 霞光辉光 -->
+  <ellipse cx="850" cy="220" rx="470" ry="118" fill="url(#glow)"/>
+  <ellipse cx="430" cy="155" rx="300" ry="82" fill="url(#glow)" opacity="0.55"/>
+
+  <!-- ============ BODY · 群山（大气透视，由远及近） ============ -->
+  <g filter="url(#ridgeSoft)">
+    <!-- 远山最浅 -->
+    <path d="M0 508 C90 472 175 450 262 454 C332 457 385 480 462 472 C562 462 612 426 702 430 C792 434 832 468 932 460 C1032 452 1082 472 1182 464 C1282 456 1362 472 1440 464 L1440 900 L0 900 Z" fill="#BDCDD7"/>
+    <!-- 中景山脊 -->
+    <path d="M0 562 C120 522 205 500 322 514 C432 527 502 554 622 544 C742 534 802 494 922 502 C1032 510 1082 546 1202 539 C1292 534 1372 550 1440 543 L1440 900 L0 900 Z" fill="#9CB5C4"/>
+    <!-- 中近山脊 -->
+    <path d="M0 612 C100 586 190 560 300 572 C420 586 470 613 600 605 C720 597 790 557 900 567 C1010 577 1060 611 1170 603 C1270 596 1350 611 1440 605 L1440 900 L0 900 Z" fill="#79A1B3"/>
+  </g>
+  <!-- 雾带压住山脚 -->
+  <rect x="0" y="584" width="1440" height="72" fill="url(#mist)"/>
+
+  <!-- ============ FOOTER · 水面 ============ -->
+  <rect x="0" y="640" width="1440" height="260" fill="url(#water)"/>
+  <!-- 倒影 -->
+  <ellipse cx="850" cy="651" rx="380" ry="12" fill="#EDF3F1" opacity="0.35"/>
+  <ellipse cx="210" cy="656" rx="150" ry="11" fill="#3C6A83" opacity="0.12"/>
+  <ellipse cx="420" cy="652" rx="130" ry="9" fill="#35596E" opacity="0.13"/>
+  <ellipse cx="1130" cy="676" rx="310" ry="24" fill="#2F5D77" opacity="0.10"/>
+  <!-- 波纹细线 -->
+  <g>
+    <rect x="180" y="648" width="280" height="2" rx="1" fill="#FFFFFF" opacity="0.30"/>
+    <rect x="760" y="653" width="420" height="2" rx="1" fill="#FFFFFF" opacity="0.25"/>
+    <rect x="1020" y="659" width="220" height="2" rx="1" fill="#EAF2F5" opacity="0.30"/>
+    <rect x="320" y="667" width="520" height="2" rx="1" fill="#FFFFFF" opacity="0.20"/>
+    <rect x="880" y="675" width="300" height="3" rx="1" fill="#D7E5EB" opacity="0.28"/>
+    <rect x="140" y="685" width="380" height="2" rx="1" fill="#FFFFFF" opacity="0.18"/>
+    <rect x="620" y="697" width="460" height="2" rx="1" fill="#FFFFFF" opacity="0.22"/>
+    <rect x="980" y="711" width="340" height="3" rx="1" fill="#CFE0E7" opacity="0.25"/>
+    <rect x="260" y="727" width="560" height="2" rx="1" fill="#FFFFFF" opacity="0.16"/>
+    <rect x="760" y="745" width="420" height="3" rx="1" fill="#FFFFFF" opacity="0.20"/>
+    <rect x="420" y="765" width="300" height="2" rx="1" fill="#CFE0E7" opacity="0.22"/>
+    <rect x="180" y="789" width="520" height="3" rx="1" fill="#FFFFFF" opacity="0.15"/>
+    <rect x="700" y="817" width="460" height="2" rx="1" fill="#FFFFFF" opacity="0.17"/>
+    <rect x="320" y="847" width="560" height="3" rx="1" fill="#DFEAF0" opacity="0.14"/>
+  </g>
+</svg>

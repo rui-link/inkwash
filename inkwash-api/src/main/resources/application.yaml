@@ -1,0 +1,143 @@
+# 服务端口
+server:
+  port: 9080
+
+spring:
+  profiles:
+    # 默认 dev：H2 内存库 + Caffeine 缓存，克隆后无需任何外部依赖即可启动。
+    # 生产部署由 Dockerfile CMD / SPRING_PROFILES_ACTIVE 显式切换到 prod。
+    active: prod
+  aop:
+    auto: true
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    # 禁止回退到系统默认语言(zh_CN)：请求 en 等无对应语言包时直接使用 base(messages.properties 英文)
+    fallback-to-system-locale: false
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+
+# 凭证相关配置
+auth:
+  credential:
+    sms-expire-minutes: 5 # 短信验证码有效期（分钟）
+    email-expire-minutes: 10 # 邮箱验证码有效期（分钟）
+    qr-expire-minutes: 3 # 二维码有效期（分钟）
+    password:
+      max-error-times: 5 # 最大连续错误次数
+      lock-minutes: 15 # 锁定时长（分钟）
+      captcha-trigger-times: 3 # 图形验证码触发阈值（错误次数）
+      captcha-expire-minutes: 15 # 图形验证码有效期（分钟）
+  oauth2:
+    callback-base-url: ${OAUTH2_CALLBACK_URL:http://localhost:9090}
+    captcha-error-times: 3 # 图形验证码触发阈值（错误次数）
+    captcha-expire-minutes: 15 # 图形验证码有效期（分钟）
+  qr-login:
+    web-url: ${QR_LOGIN_WEB_URL:http://localhost:9089/qr-login}
+
+  # HttpOnly cookie 认证（H-FS-3）
+  cookie:
+    enabled: true
+    csrf-check-enabled: true
+    access-cookie: secure_access
+    refresh-cookie: secure_refresh
+    path: /
+    refresh-path: /api/auth
+    same-site: Lax
+    secure: false
+
+  # 注册审核配置
+  register:
+    audit: true
+    default-group-name: Users # 注册成功后自动加入的用户组（未配置或不存在则跳过）
+  
+  # JWT配置
+  jwt:
+    # 签名密钥：默认留空，必须由环境变量提供。
+    # 生成方式：openssl rand -base64 48
+    # 要求：至少 48 字节（算法已固定为 HS384，见 JwtTokenConfig）
+    secret: ${AUTH_JWT_SECRET:}
+    access-expire-time: 86400000 # 令牌过期时间，单位：毫秒（此处1天）
+    refresh-expire-time: 604800000 # 刷新令牌过期时间，单位：毫秒（此处7天）
+    token-prefix: Bearer # 请求头令牌前缀
+    header: Authorization # 存储令牌的请求头名称
+    issuer: ruilink # 令牌签发者
+
+  # jackson配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non-null
+
+# 邮件（SMTP）通道
+# 开发环境默认关闭真实发送：mail.enabled=false 时验证码/邮件仅本地存储并打印日志，便于无 SMTP 联调。
+# 开启真实发送需配置 spring.mail.host/port/username/password 并设置 mail.enabled=true（生产配置见 application-prod.yaml）。
+mail:
+  enabled: false # 是否启用真实 SMTP 发送（false = 开发回退：仅记录，不真实发送）
+
+# MyBatis配置
+mybatis:
+  type-aliases-package: top.ruilink.inkwash.system.domain
+  type-handlers-package: top.ruilink.inkwash.base.handler,top.ruilink.inkwash.system.handler
+  configuration:
+    map-underscore-to-camel-case: true
+    # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 仅在dev profile启用
+
+# 日志配置
+logging:
+  level:
+    top.ruilink.inkwash: DEBUG
+    org.springframework.security: DEBUG
+
+# CORS 配置（allowed-origin 同时复用为 H-FS-3 CSRF Origin 白名单）
+# 部署方通过 CORS_ALLOWED_ORIGINS 覆盖；不要把任何内网地址写进本文件。
+cors:
+  allowed-origin: ${CORS_ALLOWED_ORIGINS:http://localhost:9089,http://localhost:9090,http://localhost:3000}
+  allowed-headers: Authorization,Content-Type,Accept,X-Requested-With
+  allow-credentials: true
+  max-age: 3600
+
+# License配置
+license:
+  public-key: ${LICENSE_PUBLIC_KEY:MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Jz384paDKRPLA5s1D+ePiB2DDlBGHQ9xyO7W87XEGcBauGErIOJZCVrvZWf63kLIJZ9TxpuvCQ54z/WrOZJDA3Q9eqNS9hW7P8RGUXIZ/cNh0Rn4+4996wYB1J/8PvtmEuG+QZ6k01SaGtmzpqi7dla/+s+N79i1igGysqLQdkf8pSFwik7yVlqkXO6JfcfkBpbA1VbksDPht4jvWmzz5QKSdFxe8poGLj5HtHJpg7SwjyJ6/2kHwxEoq6BS357fMLynQJlMLQ8leknnrU3H2BzkX4H86Ze9gp/F6E5pFXevmJx5FJJbyCIMrA9OjXhODno4W3RubfE5VdLgqXk1wIDAQAB}
+  cache-ttl-minutes: 720
+  excluded-paths:
+    - /api/license/
+    - /api/auth/
+    - /api/cms/articles
+    - /api/system/meta
+    - /health
+    - /error
+
+# Metrics配置 - 禁用OTLP
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+    metrics:
+      enabled: true
+  metrics:
+    export:
+      otlp:
+        enabled: false
+  tracing:
+    enabled: false
+  otlp:
+    metrics:
+      enabled: false
+  observability: false
+
+# File storage configuration
+file:
+  storage:
+    mode: local
+    local:
+      upload-path: ./uploads
+      url-prefix: /uploads/

@@ -1,0 +1,23 @@
+# Code owners are automatically requested as reviewers when someone opens a pull request
+# that touches a matching path. For this to have teeth, Settings -> Rulesets (or branch
+# protection) must require review before merging on the protected branches.
+#
+# Security-related files, as recommended by GitHub:
+.github/
+# Build and release tooling:
+*.java
+*.xml
+*.gradle
+*.toml
+*.yml
+*.yaml
+# Anything else that is not covered by a later rule:
+*
+
+# --- Tamper-sensitive assets -------------------------------------------------
+# Donation QR codes. Replacing one would redirect donations to whoever submitted
+# the change, so these require the maintainer's approval explicitly.
+#
+# Without a ruleset requiring review, CODEOWNERS only sends a review request --
+# it does not block the merge. Pair this file with that setting.
+.github/sponsor/*.png

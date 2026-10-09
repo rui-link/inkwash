@@ -1,0 +1,74 @@
+/*
+ * This file is part of Inkwash.
+ * Copyright (C) 2026 ruilink team.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+.captcha-row {
+  display: flex;
+  gap: 12px;
+}
+
+.captcha-row .el-input {
+  flex: 1;
+}
+
+.captcha-image {
+  height: 40px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.captcha-placeholder {
+  height: 40px;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.captcha-placeholder:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.sms-row {
+  display: flex;
+  gap: 12px;
+}
+
+.sms-row .el-input {
+  flex: 1;
+}
+
+.sms-btn {
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 40px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}

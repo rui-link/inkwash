@@ -1,0 +1,9 @@
+# inkwash CMD Application Configuration
+spring:
+  main:
+    web-application-type: none
+
+# License settings
+license:
+  private-key: ${LICENSE_PRIVATE_KEY:}
+  public-key: ${LICENSE_PUBLIC_KEY:}

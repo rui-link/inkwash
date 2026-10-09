@@ -1,0 +1,83 @@
+# 生产环境配置 (prod)
+# 使用 MySQL 或 PostgreSQL
+cache:
+  type: redis
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  # 方式一：MySQL（默认）
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/inkwash?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: ${MYSQL_PASSWORD:}
+
+  # 方式二：PostgreSQL（取消注释并注释上方MySQL配置启用）
+  # datasource:
+  #   driver-class-name: org.postgresql.Driver
+  #   url: jdbc:postgresql://localhost:5432/inkwash
+  #   username: inkwash
+  #   password: your_password_here
+
+  # ===== 邮件（SMTP）通道：生产必须配置，否则邮件不会真实发送（仅记录日志）=====
+  # 按需取消注释并填入真实 SMTP 服务信息（不要明文提交密码，使用环境变量）：
+  # mail:
+  #   host: smtp.example.com
+  #   port: 465
+  #   username: no-reply@example.com
+  #   password: ${SMTP_PASSWORD}
+  #   protocol: smtps
+  #   default-encoding: UTF-8
+  #   properties:
+  #     mail:
+  #       smtp:
+  #         auth: true
+  #         timeout: 10000
+  #         connectiontimeout: 10000
+  #         writetimeout: 10000
+  #         ssl:
+  #           enable: true
+
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: ${REDIS_PASSWORD:}
+      timeout: 60000
+
+# SQL初始化配置（生产环境，数据库已存在则禁用）
+  sql:
+    init:
+      mode: never
+
+# Actuator 安全配置（生产环境）
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+
+# 生产环境日志级别
+logging:
+  level:
+    top.ruilink.inkwash: INFO
+    org.springframework.security: WARN
+    org.springframework.web: WARN
+
+# HttpOnly cookie 生产环境强制 Secure（H-FS-3）
+# 正式环境请改回 true 并启用 HTTPS
+auth:
+  cookie:
+    secure: false
+
+# 生产环境启用真实邮件发送（配合上方 spring.mail.* 配置）
+# mail:
+#   enabled: true
+#   from: no-reply@example.com

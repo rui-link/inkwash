@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="peak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#3a3a5e" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="peak2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d4a5e" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#5a8a9e" stop-opacity="0.2"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8f0" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#fce8d0" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#f0e4d8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#faf6f0"/>
+      <stop offset="100%" stop-color="#f0ece4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Warm glow -->
+  <circle cx="16" cy="12" r="14" fill="url(#glow)"/>
+
+  <!-- Brush-drawn circle border -->
+  <path d="M16 1.5C24.3 1.5 30.5 7.7 30.5 16C30.5 24.3 24.3 30.5 16 30.5C7.7 30.5 1.5 24.3 1.5 16C1.5 7.7 7.7 1.5 16 1.5Z"
+        fill="url(#bg)" stroke="#2a1a0a" stroke-width="0.9" opacity="0.4"/>
+
+  <!-- Far mountain (blue-green wash) -->
+  <path d="M16 9C19 9 23 14 25 17L22 15L20 17L23 20L16 13Z"
+        fill="url(#peak2)" opacity="0.55"/>
+
+  <!-- Near mountain (deep ink) -->
+  <path d="M16 9C13 11 9 15 7 18L10 16L12 18L9 21L16 14Z"
+        fill="url(#peak)" opacity="0.85"/>
+
+  <!-- Mist layers -->
+  <path d="M4 18Q10 15 16 17Q22 19 28 17" stroke="#8a6a4a" stroke-width="0.6" fill="none" opacity="0.15"/>
+  <path d="M5 20Q12 17 18 19Q25 21 27 20" stroke="#9a7a5a" stroke-width="0.5" fill="none" opacity="0.1"/>
+
+  <!-- Water strokes -->
+  <path d="M6 24Q10 23 14 24Q18 25 22 24Q26 23 28 24"
+        stroke="#2a1a0a" stroke-width="0.6" fill="none" opacity="0.25"/>
+  <path d="M7 25.5Q11 24.5 15 25.5Q19 26.5 23 25.5Q26 24.5 27 25.5"
+        stroke="#2a1a0a" stroke-width="0.4" fill="none" opacity="0.15"/>
+
+  <!-- Ink splash dots -->
+  <circle cx="6" cy="21.5" r="0.5" fill="#2a1a0a" opacity="0.35"/>
+  <circle cx="25" cy="23" r="0.6" fill="#2a1a0a" opacity="0.25"/>
+  <circle cx="13" cy="26" r="0.3" fill="#2a1a0a" opacity="0.15"/>
+  <circle cx="26" cy="14" r="0.3" fill="#d4635a" opacity="0.4"/>
+
+  <!-- Red seal stamp -->
+  <rect x="22" y="24.5" width="2.2" height="2.2" rx="0.3" fill="#c0392b" opacity="0.85"/>
+</svg>

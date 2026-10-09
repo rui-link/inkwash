@@ -1,0 +1,42 @@
+# OAuth2 登录（可选功能）
+#
+# 仅当 profile `oauth` 激活时加载：
+#   SPRING_PROFILES_ACTIVE=oauth
+# 或把该 profile 追加到已有的激活列表（逗号分隔）。
+#
+# 当前只注册了 GitHub 一个 provider。以后接入其他平台时，
+# 在下方 `registration` / `provider` 下并列追加即可——profile 名保持
+# `oauth` 不变，它表达的是「启用 OAuth 登录」而非某个具体平台。
+#
+# 为什么放在独立文件而不是主 application.yaml：
+# Spring Boot 的 OAuth2 客户端自动配置在「存在 registration 但 client-id 为空」时
+# 直接抛 IllegalStateException("Client id of registration 'github' must not be empty")
+# 并终止整个应用启动。若把空占位写进主配置，所有未配置 OAuth 登录的部署方
+# （即绝大多数用户）都将无法启动——一个可选功能会变成硬性前置条件。
+#
+# 安全要求：本文件在仓库中**不含任何真实凭据**，凭据一律由环境变量注入。
+# 切勿把 client-id / client-secret 写死在这里——仓库是公开的，
+# 一旦入库必须视为已泄漏，只能到 GitHub（Settings → Developer settings → OAuth Apps）
+# 吊销并重建。
+spring:
+  config:
+    activate:
+      on-profile: oauth
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${OAUTH2_GITHUB_CLIENT_ID}
+            client-secret: ${OAUTH2_GITHUB_CLIENT_SECRET}
+            scope: user:email,read:user
+            redirect-uri: "{baseUrl}/oauth2/callback/{registrationId}"
+            client-name: GitHub
+            authorization-grant-type: authorization_code
+            client-authentication-method: client_secret_basic
+        provider:
+          github:
+            authorization-uri: https://github.com/login/oauth/authorize
+            token-uri: https://github.com/login/oauth/access_token
+            user-info-uri: https://api.github.com/user
+            user-name-attribute: login

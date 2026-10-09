@@ -1,0 +1,57 @@
+# 开发环境配置 (dev)
+# 使用 H2 内存数据库
+cache:
+  type: caffeine
+
+# 开发环境默认值（仅用于开发，生产环境必须配置环境变量）
+#OAUTH2_GITHUB_CLIENT_ID: dev-github-client-id
+#OAUTH2_GITHUB_CLIENT_SECRET: dev-github-client-secret
+
+auth:
+  jwt:
+    # 这是公开已知的固定密钥，仅供本地开发使用，任何人可据此伪造令牌。
+    # 生产环境必须通过 AUTH_JWT_SECRET 环境变量覆盖（application.yaml 中无默认值，
+    # 未设置时 prod / 直接运行 jar 会直接启动失败）。
+    # 长度 54 字节 → HS384，与生产要求一致。
+    secret: ${AUTH_JWT_SECRET:inkwash-dev-jwt-secret-key-for-development-only-2026!!}
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:rbac_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    username: sa
+    password:
+
+  # H2控制台（开发环境启用）
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  # SQL初始化配置 (由 DatabaseInitializer 处理)
+  sql:
+    init:
+      mode: never
+
+# 禁用OTLP metrics
+management:
+  metrics:
+    export:
+      otlp:
+        enabled: false
+  otlp:
+    metrics:
+      enabled: false
+  tracing:
+    enabled: false
+
+# 开发环境日志级别
+logging:
+  level:
+    top.ruilink.inkwash: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG

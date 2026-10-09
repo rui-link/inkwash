@@ -1,0 +1,165 @@
+/*
+ * This file is part of Inkwash.
+ * Copyright (C) 2026 ruilink team.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+@use 'reset.scss';
+
+.app-container {
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.search-container {
+  margin-bottom: 0;
+  background: var(--card-bg);
+  border-radius: 4px;
+  padding: 16px 20px 0;
+  border: 1px solid var(--table-border);
+}
+
+.table-container {
+  .el-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-x-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.wh-full {
+  width: 100%;
+  height: 100%;
+}
+
+.el-card {
+  position: relative;
+  border: 1px solid var(--table-border) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  transition: box-shadow 0.25s;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: var(--el-color-primary);
+    border-style: solid;
+  }
+
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+  }
+
+  &::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 2px 2px 0;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .el-card__header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--table-border);
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+.el-table {
+  th.el-table__cell {
+    background: var(--table-header-bg) !important;
+    font-weight: 600;
+    color: var(--el-text-color-primary);
+  }
+
+  .el-table__fixed,
+  .el-table__fixed-right,
+  .el-table__fixed-right-wrapper,
+  .el-table__fixed-header-wrapper {
+    th.el-table__cell {
+      background: var(--table-header-bg) !important;
+      font-weight: 600;
+      color: var(--el-text-color-primary);
+    }
+
+    .el-table__row--striped td.el-table__cell {
+      background: var(--table-stripe-bg) !important;
+    }
+  }
+
+  .el-table__inner-wrapper::before,
+  .el-table__border-left-patch,
+  .el-table__border-right-patch {
+    background: var(--table-border);
+  }
+
+  .el-table__row--striped {
+    td.el-table__cell {
+      background: var(--table-stripe-bg) !important;
+    }
+  }
+}
+
+.el-dialog {
+  --el-dialog-padding-primary: 20px;
+
+  .el-dialog__header {
+    margin-right: 0;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--table-border);
+  }
+
+  .el-dialog__footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--table-border);
+  }
+}
+
+.el-form-item__label {
+  font-weight: 500;
+}
+
+.el-popper.account-dropdown-popper {
+  padding: 0 10px;
+  min-width: 120px;
+}
+
+.tag-preview {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  background: var(--tag-default-bg);
+  color: var(--el-text-color-regular);
+}
