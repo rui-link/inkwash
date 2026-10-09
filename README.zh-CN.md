@@ -299,7 +299,7 @@ Java 用 **TAB** 缩进，JS/Vue 用 2 空格。`pnpm test:unit` 需要 `--run`�
 
 | 支付宝 | 微信 |
 |:---:|:---:|
-| <img src="https://raw.githubusercontent.com/rui-link/inkwash/e91238737d2481bc995a105e387a97f72d634d46/.github/sponsor/alipay.png" width="240" alt="支付宝收款码"> | <img src="https://raw.githubusercontent.com/rui-link/inkwash/e91238737d2481bc995a105e387a97f72d634d46/.github/sponsor/wechat.png" width="240" alt="微信收款码"> |
+| <img src="https://raw.githubusercontent.com/rui-link/inkwash/a8e97edb6404d172e59e919088b2bfc83ff2ad4e/.github/sponsor/alipay.png" width="240" alt="支付宝收款码"> | <img src="https://raw.githubusercontent.com/rui-link/inkwash/a8e97edb6404d172e59e919088b2bfc83ff2ad4e/.github/sponsor/wechat.png" width="240" alt="微信收款码"> |
 
 </details>
 
