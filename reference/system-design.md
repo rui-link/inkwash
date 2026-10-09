@@ -1260,7 +1260,7 @@ graph LR
     R -->|"sys_role_permission"| P["sys_permission"]
 
     P --> A["authority 串<br/>module:resource:action"]
-    M["sys_menu"] -->|"sys_menu_permission"| P
+    M["sys_menu"] -->| P
 
     style U fill:#e3f2fd
     style P fill:#e8f5e9
@@ -1547,7 +1547,7 @@ private String phone;
 
 | 组 | 表 | 说明 |
 |---|---|---|
-| RBAC | `sys_user`、`sys_account`、`sys_identity`、`sys_group`、`sys_role`、`sys_permission`、`sys_menu`、`sys_user_group`、`sys_group_role`、`sys_role_permission`、`sys_menu_permission` | 授权主链路及其关联（11 张） |
+| RBAC | `sys_user`、`sys_account`、`sys_identity`、`sys_group`、`sys_role`、`sys_permission`、`sys_menu`、`sys_user_group`、`sys_group_role`、`sys_role_permission` | 授权主链路及其关联（11 张） |
 | 平台 | `sys_notice`、`sys_preference` | 站内通知、用户偏好（2 张） |
 | 审计 | `mon_login_info`、`mon_journal` | 登录日志、操作日志（2 张） |
 | 文件 | `media_file` | 上传文件元数据（1 张） |

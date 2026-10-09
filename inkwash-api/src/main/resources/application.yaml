@@ -6,7 +6,7 @@ spring:
   profiles:
     # 默认 dev：H2 内存库 + Caffeine 缓存，克隆后无需任何外部依赖即可启动。
     # 生产部署由 Dockerfile CMD / SPRING_PROFILES_ACTIVE 显式切换到 prod。
-    active: prod
+    active: dev
   aop:
     auto: true
   messages:

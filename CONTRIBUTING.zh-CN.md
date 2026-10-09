@@ -406,8 +406,7 @@ git status --short        # 逐行审阅，确认没有 docs/
 git diff --cached --stat
 ```
 
-若你改动了 `.github/sponsor/*.png`，请预期会收到维护者的显式评审 —— 替换收款码会把捐赠导向提交
-该改动的人。
+请不要改动 `.github` 目录下的文件
 
 ---
 
